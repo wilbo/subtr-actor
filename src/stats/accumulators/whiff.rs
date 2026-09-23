@@ -113,6 +113,14 @@ impl WhiffStatsAccumulator {
         }
     }
 
+    /// Counts a beaten-to-ball event from the dedicated detector, which replaced the legacy whiff variant.
+    pub fn apply_beaten_to_ball_event(&mut self, event: &BeatenToBallEvent) {
+        self.player_stats
+            .entry(event.player.clone())
+            .or_default()
+            .beaten_to_ball_count += 1;
+    }
+
     pub fn restore_current_last_event_marker(&mut self) {
         if let Some(player_id) = self.current_last_whiff_player.as_ref() {
             if let Some(stats) = self.player_stats.get_mut(player_id) {
@@ -125,3 +133,7 @@ impl WhiffStatsAccumulator {
         self.current_last_whiff_player = None;
     }
 }
+
+#[cfg(test)]
+#[path = "whiff_tests.rs"]
+mod tests;
