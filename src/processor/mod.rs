@@ -87,6 +87,7 @@ pub(crate) fn attribute_type_name(attribute: &boxcars::Attribute) -> &'static st
         boxcars::Attribute::Impulse(_) => "Impulse",
         boxcars::Attribute::ReplicatedBoost(_) => "ReplicatedBoost",
         boxcars::Attribute::LogoData(_) => "LogoData",
+        boxcars::Attribute::HonorDuelChallenge(_) => "HonorDuelChallenge",
     }
 }
 
